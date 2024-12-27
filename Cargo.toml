@@ -1,12 +1,13 @@
 [package]
 name = "verity-memory"
-version = "1.0.1"
+version = "1.0.2"
 edition = "2021"
 description = "Personal memory library with some cool features."
 license = "MIT"
 repository = "https://github.com/VerityIncorporated/verity-memory"
 homepage = "https://github.com/VerityIncorporated/verity-memory"
 documentation = "https://docs.rs/verity-memory"
+readme = "README.md"
 
 [lib]
 name = "verity_memory"
