@@ -2,6 +2,11 @@
 name = "verity-memory"
 version = "0.1.0"
 edition = "2021"
+description = "A brief description of your crate's functionality."
+license = "MIT"
+repository = "https://github.com/VerityIncorporated/verity-memory"
+homepage = "https://github.com/VerityIncorporated/verity-memory"
+documentation = "https://docs.rs/verity-memory"
 
 [lib]
 name = "verity_memory"
