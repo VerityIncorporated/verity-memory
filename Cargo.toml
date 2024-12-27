@@ -1,6 +1,6 @@
 [package]
 name = "verity-memory"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
 description = "A brief description of your crate's functionality."
 license = "MIT"
