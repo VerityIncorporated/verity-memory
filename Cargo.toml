@@ -1,6 +1,6 @@
 [package]
 name = "verity-memory"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 description = "Personal memory library with some cool features."
 license = "MIT"
