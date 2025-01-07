@@ -1,6 +1,6 @@
 [package]
 name = "verity-memory"
-version = "1.0.3"
+version = "1.0.4"
 edition = "2021"
 description = "Personal memory library with some cool features."
 license = "MIT"
@@ -16,8 +16,7 @@ crate-type = ["rlib", "cdylib"]
 
 [dependencies]
 libloading = "0.8.6"
-tokio = { version = "1.42.0", features = ["sync", "rt", "macros"] }
-winapi = { version = "0.3", features = ["memoryapi", "processthreadsapi", "handleapi", "sysinfoapi", "libloaderapi"] }
+winapi = { version = "0.3", features = ["memoryapi", "libloaderapi"] }
 capstone = { version = "0.12.0", optional = true }
 dynasmrt = { version = "3.0.1", optional = true }
 
