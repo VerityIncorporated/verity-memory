@@ -1,11 +1,15 @@
 use winapi::um::winnt::PAGE_EXECUTE_READWRITE;
 use winapi::{shared::minwindef::LPVOID, um::memoryapi::VirtualProtect};
 
+#[cfg(feature = "advanced-write")]
 use crate::macros::match_number::{FloatType, IntegerType, IntegralType, NumberType};
+#[cfg(feature = "advanced-write")]
 use crate::types::Instruction;
 use crate::{errors::WriteMemoryError, utils};
+#[cfg(feature = "advanced-write")]
 use crate::match_number;
 
+#[cfg(feature = "advanced-write")]
 use super::asm::{float_ret, get_instruction, integer_ret, integral_ret};
 
 /// Writes a value of type `T` to the specified memory location.
@@ -93,6 +97,7 @@ pub unsafe fn write_memory<T: Copy>(dest_ptr: *mut T, value: T) -> Result<(), Wr
 ///     assert!(original_instructions.is_some());
 /// }
 /// ```
+#[cfg(feature = "advanced-write")]
 pub unsafe fn nop_instructions(dest_ptr: *mut u8, num_instructions: usize) -> Option<Vec<Instruction>> {
     let mut instructions = Vec::new();
     let mut current_ptr = dest_ptr;
@@ -153,6 +158,7 @@ pub unsafe fn nop_instructions(dest_ptr: *mut u8, num_instructions: usize) -> Op
 ///     assert!(result.is_some());
 /// }
 /// ```
+#[cfg(feature = "advanced-write")]
 pub unsafe fn replace_return_value<T: Copy + 'static>(
     dest_ptr: *mut u8,
     return_value: Option<T>,
@@ -227,6 +233,7 @@ mod tests {
     }
     
     #[test]
+    #[cfg(feature = "advanced-write")]
     fn test_nop_instructions_success() {
         let data: Vec<u8> = vec![0x55, 0x48, 0x8B, 0xEC, 0x90];
         let dest_ptr = data.as_ptr() as *mut u8;
@@ -241,6 +248,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(feature = "advanced-write")]
     fn test_nop_instructions_failure() {
         let dest_ptr: *mut u8 = ptr::null_mut();
 
@@ -251,6 +259,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(feature = "advanced-write")]
     fn test_replace_return_value_integer() {
         let data: Vec<u8> = vec![0x55, 0x48, 0x8B, 0xEC];
         let dest_ptr = data.as_ptr() as *mut u8;
@@ -262,6 +271,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(feature = "advanced-write")]
     fn test_replace_return_value_float() {
         let data: Vec<u8> = vec![0x55, 0x48, 0x8B, 0xEC];
         let dest_ptr = data.as_ptr() as *mut u8;
@@ -273,6 +283,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(feature = "advanced-write")]
     fn test_replace_return_value_none() {
         let data: Vec<u8> = vec![0x55, 0x48, 0x8B, 0xEC];
         let dest_ptr = data.as_ptr() as *mut u8;

@@ -1,7 +1,9 @@
 pub mod errors;
 pub mod macros;
 pub mod ops;
+#[cfg(feature = "aob")]
 pub mod pattern;
+#[cfg(feature = "runtime")]
 pub mod runtime;
 pub mod types;
 pub mod utils;
